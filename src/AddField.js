@@ -14,15 +14,19 @@ class AddField extends Component {
   handleClick = event => {
     if (this.state.inputValue != "") {
       this.props.addMovie(this.state.inputValue);
+      this.setState({ inputValue: "" });
     }
   };
   render() {
     return (
-      <div className="input-group mb-3" style={{ width: "250px" }}>
+      <div
+        className="input-group mb-5"
+        style={{ width: "250px", marginLeft: "auto", marginRight: "auto" }}
+      >
         <input
           type="text"
           class="form-control"
-          placeholder="Enter a movie.."
+          placeholder="Add a movie.."
           value={this.state.inputValue}
           onChange={this.handleChange}
         />

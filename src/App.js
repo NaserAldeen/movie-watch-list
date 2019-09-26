@@ -6,11 +6,13 @@ import AddField from "./AddField";
 function App() {
   return (
     <div className="App container my-5">
-      <div className="row ml-5 mb-5">
+      <div className="row">
         <div className="col">
           <AddField />
         </div>
+        <div className="col"></div>
       </div>
+
       <div className="row">
         <div className="col">
           <WatchList type="1" />

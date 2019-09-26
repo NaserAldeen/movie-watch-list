@@ -6,36 +6,27 @@ import MovieRow from "./MovieRow";
 class WatchList extends Component {
   state = {
     query: ""
-    // filteredList:
-    //   this.props.type == "1" ? this.props.watchList : this.props.watchedList
   };
   handleChange = event => {
     this.setState({ query: event.target.value });
-    //DO FILTERING
   };
-  componentDidUpdate(prevProps) {
-    console.log(prevProps);
-  }
-  render() {
-    let items = [];
-    if (this.props.type == "1") {
-      items = this.props.watchList.map(item => {
-        return (
-          <div>
-            <MovieRow title={item} watched={false} />
-          </div>
-        );
-      });
-    } else if (this.props.type == "2") {
-      items = this.props.watchedList.map(item => {
-        return (
-          <div>
-            <MovieRow title={item} watched={true} />
-          </div>
-        );
-      });
-    }
 
+  render() {
+    const selectedList =
+      this.props.type == "1" ? this.props.watchList : this.props.watchedList;
+    const isWatched = this.props.type == "1" ? false : true;
+    let items = selectedList
+      .filter(movie => movie.includes(this.state.query))
+      .map(item => {
+        return (
+          <div>
+            <MovieRow title={item} watched={isWatched} />
+          </div>
+        );
+      });
+    if (items.length == 0) {
+      items = <li className="list-group-item">No results found</li>;
+    }
     return (
       <div className="container" style={{ width: "400px" }}>
         <ul className="list-group">
