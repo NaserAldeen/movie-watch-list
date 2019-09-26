@@ -1,8 +1,8 @@
 import { WATCH, UNWATCH, DELETE, ADD_MOVIE } from "../actions/actionTypes";
 
 const initialState = {
-  watchList: ["something1", "something2"],
-  watchedList: ["something3"]
+  watchList: ["Spectre", "Sicario", "Into the Wild", "Enemy"],
+  watchedList: ["Coffee & Cigarettes", "Moonrise Kingdom"]
 };
 
 export default (state = initialState, action) => {

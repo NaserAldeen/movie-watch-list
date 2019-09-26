@@ -21,7 +21,7 @@ class AddField extends Component {
     return (
       <div
         className="input-group mb-5"
-        style={{ width: "250px", marginLeft: "auto", marginRight: "auto" }}
+        style={{ width: "250px", marginLeft: "85px" }}
       >
         <input
           type="text"
@@ -32,7 +32,7 @@ class AddField extends Component {
         />
         <div className="input-group-append">
           <button
-            className="btn btn-success"
+            className="btn btn-info"
             type="button"
             id="button-addon2"
             onClick={this.handleClick}

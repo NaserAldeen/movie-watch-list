@@ -1,19 +1,15 @@
 import React from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 import WatchList from "./WatchList";
 import AddField from "./AddField";
-function App() {
+
+function App(props) {
   return (
     <div className="App container my-5">
-      <div className="row">
-        <div className="col">
-          <AddField />
-        </div>
-        <div className="col"></div>
-      </div>
+      <AddField />
 
-      <div className="row">
+      <div className="row justify-content-between">
         <div className="col">
           <WatchList type="1" />
         </div>

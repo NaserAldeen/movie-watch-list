@@ -22,7 +22,7 @@ function MovieRow(props) {
         <div className="row">
           <div className="col">{props.title}</div>
           <div className="col">
-            <button className="btn btn-primary" onClick={() => watchMovie()}>
+            <button className="btn btn-info" onClick={() => watchMovie()}>
               {buttonText}
             </button>
           </div>

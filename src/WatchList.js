@@ -5,30 +5,43 @@ import MovieRow from "./MovieRow";
 
 class WatchList extends Component {
   state = {
-    query: ""
+    query: "",
+    isSearching: false
   };
   handleChange = event => {
-    this.setState({ query: event.target.value });
+    if (event.target.value == "")
+      this.setState({ query: event.target.value, isSearching: false });
+    else this.setState({ query: event.target.value, isSearching: true });
   };
 
   render() {
     const selectedList =
       this.props.type == "1" ? this.props.watchList : this.props.watchedList;
     const isWatched = this.props.type == "1" ? false : true;
-    let items = selectedList
-      .filter(movie => movie.includes(this.state.query))
-      .map(item => {
-        return (
-          <div>
-            <MovieRow title={item} watched={isWatched} />
-          </div>
-        );
-      });
+    const filteredList = selectedList.filter(movie =>
+      movie.toLowerCase().includes(this.state.query.toLowerCase())
+    );
+    let items = filteredList.map(item => {
+      return (
+        <div>
+          <MovieRow title={item} watched={isWatched} />
+        </div>
+      );
+    });
     if (items.length == 0) {
-      items = <li className="list-group-item">No results found</li>;
+      items = <li className="list-group-item">Nothing found.</li>;
     }
+    const listTitle = this.props.type == "1" ? "Watchlist" : "Watched";
+    const moviesCount = this.state.isSearching
+      ? (items.length ? items.length : "0") + " out of " + selectedList.length
+      : items.length;
+
     return (
-      <div className="container" style={{ width: "400px" }}>
+      <div className="container" style={{ width: "500px" }}>
+        <h4>
+          {listTitle}{" "}
+          <span class="badge badge-info badge-pill">{moviesCount}</span>
+        </h4>
         <ul className="list-group">
           <li className="list-group-item">
             <input
